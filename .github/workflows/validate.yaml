@@ -8,24 +8,24 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4.0.0
         name: Download repo
         with:
           fetch-depth: 0
-      - uses: actions/setup-python@v2
+      - uses: actions/setup-python@v4.7.0
         name: Setup Python
         with:
-          python-version: "3.8.x"
-      - uses: actions/cache@v2
+          python-version: "3.11"
+      - uses: actions/cache@v3.3.2
         name: Cache
         with:
           path: |
             ~/.cache/pip
           key: custom-component-ci
-      - name: HACS Action
-        uses: hacs/action@main
-        with:
-          CATEGORY: integration
+      # - name: HACS Action
+      #   uses: hacs/action@main
+      #   with:
+      #     CATEGORY: integration
           # ignore: requirements
       - name: hassfest
         uses: home-assistant/actions/hassfest@master
